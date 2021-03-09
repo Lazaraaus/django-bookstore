@@ -8,6 +8,11 @@ services:
       - .:/bookstore
     ports:
       - 8000:8000
+    depends_on:
+      - db
+    environment:
+      - "DJANGO_SECRET_KEY=ps1k6tgv5l91vn_9-0#)1(m(m1)#60-!666bam$cu8n@t0+dy2"
+      - "DJANGO_DEBUG=True"
   db:
     image: postgres:11
     volumes:

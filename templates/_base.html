@@ -1,16 +1,137 @@
 <!-- templates/_base.html -->
-<!Doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>{% block title %} Django Bookstore {% endblock title %}</title>
-	</head>
-
-	<body>
-		<div class="container">
-			{% block content %}
-			{% endblock content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %} Django Bookstore {% endblock title %}</title>
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+</head>
+<body>
+{% block nav %}
+{% if user.is_authenticated %} 
+	<nav class="navbar" id="auth-nav" role="navigation" aria-label="main navigation">
+		<div class="navbar-brand">
+			<a href="#" class="navbar-item">
+				<img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+			</a>
+			<a role="button" class="navbar-burger" aria-label="menu" aria-expandable="false" data-target="navbarBasicExample">
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+			</a>
 		</div>
-	</body>
+		<div class="navbar-menu" id="navbarBasicExample">
+			<div class="navbar-start">
+				<a href="{% url 'home' %}" class="navbar-item">
+					Home
+				</a>
+				<a href="#" class="navbar-item">
+					Search
+				</a>
+				<a href="#" class="navbar-item">
+					Lists
+				</a>
+				<a href="#" class="navbar-item">
+					Reccomended
+				</a>
+				<a href="#" class="navbar-item">
+					Shuffle
+				</a>
+			</div>
+		</div>
+	
+		<div class="navbar-end">
+			<div class="navbar-item">
+				<a href="{% url 'logout' %}" class="button is-primary">
+					Log Out
+				</a>
+			</div>
+			<div class="navbar-item has-dropdown is-hoverable">
+				<a class="navbar-link">
+					Options
+				</a>
+				<div class="navbar-dropdown">
+					<a href="{% url 'about' %}" class="navbar-item">
+						About
+					</a>
+					<a href="" class="navbar-item">
+						Contact
+					</a>
+					<hr class="navbar-divider">
+					<a href="" class="navbar-item">
+						Report an Issue
+					</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+{% else %} 
+	<nav class="navbar" id="nav" role="navigation" aria-label="main navigation">
+		<div class="navbar-brand">
+			<a href="#" class="navbar-item">
+				<img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+			</a>
+			<a role="button" class="navbar-burger" aria-label="menu" aria-expandable="false" data-target="navbarBasicExample">
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+			</a>
+		</div>
+		<div class="navbar-menu" id="navbarBasicExample">
+			<div class="navbar-start">
+				<a href="{% url 'home' %}" class="navbar-item">
+					Home
+				</a>
+				<a href="#" class="navbar-item">
+					Search
+				</a>
+				<a href="#" class="navbar-item">
+					Shuffle
+				</a>
+			</div>
+		</div>
+	
+		<div class="navbar-end">
+			<div class="navbar-item">
+				<div class="buttons">
+					<a href="{% url 'login' %}" class="button is-primary">
+						Log In 
+					</a>
+					<a href="{%url 'signup' %}" class="button is-light">
+						Sign Up
+					</a>
+				</div>
+			</div>
+			<div class="navbar-item has-dropdown is-hoverable">
+				<a class="navbar-link">
+					Options
+				</a>
+				<div class="navbar-dropdown">
+					<a href="{% url 'about' %}" class="navbar-item">
+						About
+					</a>
+					<a href="" class="navbar-item">
+						Contact
+					</a>
+					<hr class="navbar-divider">
+					<a href="" class="navbar-item">
+						Report an Issue
+					</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+{% endif %}
+{% endblock nav %}
 
+
+{% block content %}
+{% endblock content %}
+
+</body>
 </html>

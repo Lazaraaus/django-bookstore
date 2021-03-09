@@ -1,16 +1,27 @@
 <!-- templates/home.html --> 
 {% extends '_base.html' %}
 
-{% block title %} Home {% endblock title %} 
-
+{% block title %} Home {% endblock title %} 	
+<!--	Page Content 	-->
 {% block content %} 
-	<h1> Homepage</h1>
-	{% if user.is_authenticated %}
-		<p>	Hi {{ user.email }}! </p>
-		<a href="{% url 'logout' %}">Log Out</a>
-	{% else %}
-		<p> You are not logged in</p>
-		<a href="{% url 'login' %}">Log In </a>
-		<a href="{% url 'signup' %}">Sign Up</a>
-	{% endif %}
+<!-- 	Banner			-->
+<section class="hero is-primary is-small">
+	<div class="hero-body">
+		<p class="title has-text-centered">
+			Something Catchy and Eye Grabbing
+		</p>
+	</div>
+</section>
+<!--	Home Content    -->
+<div class="container">
+	<div class="section" id="content">	
+		<div class=columns>
+			<div class="column">
+				<h1 class="title is-3 has-text-centered">
+					Bookstore Home 
+				</h1>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock content %} 

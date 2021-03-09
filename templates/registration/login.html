@@ -4,10 +4,40 @@
 {% block title %} Log In {% endblock title %}
 
 {% block content %}
-	<h2> Log In </h2>
-	<form method="post">
-		{% csrf_token %}
-		{{ form.as_p  }}
-		<button type="submit">Log In</button>
-	</form>
+<section class="hero is-info is-small">
+	<div class="hero-body">
+		<p class="title has-text-centered">
+			Something Catchy and Eye Grabbing 
+		</p>
+	</div>
+</section>
+<div class="container mt-6">
+	<div class="columns is-centered">
+		<div class="column is-4">
+			<form class="box" method="post">{% csrf_token %}
+				<h1 class="title is-3">
+					Log In
+				</h1>
+				<div class="field">
+					<label class="label">
+						Username
+					</label>
+					<div class="control">
+						{{ form.username }}
+					</div>
+				</div>
+				<div class="field">
+					<label class="label">
+						Password
+					</label>
+					<div class="control">
+						{{ form.password }}
+					</div>
+				</div>
+				<button type="submit">Log In</button>
+			</form>
+		</div>
+	</div>
+</div>
+
 {% endblock content %} 

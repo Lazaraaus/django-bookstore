@@ -23,7 +23,7 @@
 						Username
 					</label>
 					<div class="control">
-						{{ form.username }}
+						{{ form.login}}
 					</div>
 				</div>
 				<div class="field">
@@ -34,10 +34,17 @@
 						{{ form.password }}
 					</div>
 				</div>
+				<div class="field is-grouped">
+					<span class="pr-1">
+						{{ form.remember }}
+					</span>
+					<label class="label">
+						Remember me
+					</label>
+				</div>
 				<button type="submit">Log In</button>
 			</form>
 		</div>
-	</div>
 </div>
 
 {% endblock content %} 

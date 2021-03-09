@@ -1,0 +1,43 @@
+<!-- templates/accounts/logout.html-->
+{% extends '_base.html' %}
+
+{% block title %} Log Out {% endblock title %} 
+
+{% block content %} 
+<section class="hero is-danger is-small">
+	<div class="hero-body">
+		<p class="title has-text-centered">
+			Something Catchy and Eye Grabbing 
+		</p>
+	</div>
+</section>
+<div class="columns is-centered mt-6">
+    <div class="column is-4">
+        <article class="message is-danger">
+            <div class="message-header">
+              <p>Are you sure you want to log out of your account? </p>
+              <a href="{%url 'home' %}"><button class="delete" aria-label="delete"></button></a>
+            </div>
+            <div class="message-body">
+                <div class="columns is-centered">
+                    <div class="column is-4">
+                        <form method="post" action="{% url 'account_logout' %}">{% csrf_token %}
+                            {{ form.as_p }}
+                            <div class="container">
+                                <button class="button is-danger is-outlined is-small is-fullwidth" type="submit">
+                                    <span>Log Out</span>
+                                    <span class="icon is-small">
+                                      <i class="fas fa-times"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>
+
+
+{% endblock content %}

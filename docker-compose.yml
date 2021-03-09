@@ -13,6 +13,11 @@ services:
     environment:
       - "DJANGO_SECRET_KEY=ps1k6tgv5l91vn_9-0#)1(m(m1)#60-!666bam$cu8n@t0+dy2"
       - "DJANGO_DEBUG=True"
+      - "DJANGO_EMAIL_HOST=smtp.sendgrid.net"
+      - "DJANGO_EMAIL_HOST_USER=apikey"
+      - "DJANGO_EMAIL_HOST_PASSWORD=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"
+      - "DJANGO_EMAIL_PORT=587"
+      - "DJANGO_EMAIL_USE_TLS=True"
   db:
     image: postgres:11
     volumes:

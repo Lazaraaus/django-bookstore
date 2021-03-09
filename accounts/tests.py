@@ -62,6 +62,47 @@ class SignupTests(TestCase):
         self.assertEqual(get_user_model().objects.all()[0].username, self.username)
         self.assertEqual(get_user_model().objects.all()[0].email, self.email)
 
+        # Test Password Change Functionality 
+class PasswordChangeTests(TestCase):
+    # User Attribs 
+    username = 'newuser'
+    email = 'newuser@email.com'
+    password = 'pass123'
+    # Helper Function 
+    def setUp(self):
+        new_user = get_user_model().objects.create_user(
+            self.username, self.email, self.password
+        )
+        url = reverse('account_change_password') 
+        self.response = self.client.get(url)
+
+    # Test Template
+    def test_password_change_template(self):
+        self.assertEqual(self.response.status_code, 302)
+        self.assertTemplateUsed(self.response, 'account/password_change.html')
+        self.assertContains(self.response, 'Change Password')
+        self.assertNotContains(self.response, 'Hi there! I should not be on this page.')
+
+class PasswordResetTests(TestCase):
+    # User Attribs 
+    username = 'newuser'
+    email = 'newuser@email.com'
+    password = 'pass123'
+    # Helper Function 
+    def setUp(self):
+        new_user = get_user_model().objects.create_user(
+            self.username, self.email, self.password
+        )
+        url = reverse('account_reset_password') 
+        self.response = self.client.get(url)
+
+    # Test Template
+    def test_password_reset_template(self):
+        self.assertEqual(self.response.status_code, 200)
+        self.assertTemplateUsed(self.response, 'account/password_reset.html')
+        self.assertContains(self.response, 'Something Catchy and Eye Grabbing')
+        self.assertNotContains(self.response, 'Hi there! I should not be on this page.')
+
     # No Longer Needed, using all-auth forms/views
     # def test_signup_form(self):
     #     # Get form from HTTP Response
@@ -78,4 +119,4 @@ class SignupTests(TestCase):
     #     self.assertEqual(
     #         view.func.__name__,
     #         SignupPageView.as_view().__name__
-    #     )
+    #  
